@@ -4,7 +4,7 @@ description: |
   'Identifies when a user creates an Azure CloudShell for the first time.
   Monitor this activity to ensure only the expected users are using CloudShell.'
 severity: Low
-status: Available
+status: Enabled
 requiredDataConnectors:
   - connectorId: AzureActivity
     dataTypes:
