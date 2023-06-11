@@ -9,13 +9,13 @@ name: Deploy Content to visual-sentinel-log [432b9795-d575-4577-8d67-bb2dd4ae606
 #   2. Append the path to the directory environment variable below
 #       directory: '${{ github.workspace }}/SentinelContent'
 
-on: 
-  push:
-    branches: [ master ]
-    paths:
-    - '**'
-    - '!.github/workflows/**'  # this filter prevents other workflow changes from triggering this workflow
-    - '.github/workflows/sentinel-deploy-432b9795-d575-4577-8d67-bb2dd4ae6069.yml'
+on: workflow_dispatch
+  # push:
+  #   branches: [ master ]
+  #   paths:
+  #   - '**'
+  #   - '!.github/workflows/**'  # this filter prevents other workflow changes from triggering this workflow
+  #   - '.github/workflows/sentinel-deploy-432b9795-d575-4577-8d67-bb2dd4ae6069.yml'
 
 jobs:
   deploy-content:
@@ -24,7 +24,7 @@ jobs:
       resourceGroupName: 'visual-log-rg'
       workspaceName: 'visual-sentinel-log'
       workspaceId: '7cdf5121-76c4-4174-b0d8-5180c2ab250f'
-      directory: '${{ github.workspace }}'
+      directory: '${{ github.workspace }}/SentinelContent'
       cloudEnv: 'AzureCloud'
       creds: ${{ secrets.AZURE_SENTINEL_CREDENTIALS_432b9795d57545778d67bb2dd4ae6069 }}
       contentTypes: 'AnalyticsRule,HuntingQuery,AutomationRule,Parser,Playbook,Workbook'
